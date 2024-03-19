@@ -4,6 +4,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TimeAgo from "./Time";
 import { Tooltip } from "@mui/material";
+import NumberFormatter from "../Compare/Nomberformater";
 
 export function List({ data }) {
   console.log(data);
@@ -55,10 +56,15 @@ export function List({ data }) {
             </h5>
             <Tooltip title="total volume" placement="top">
               <h2>$:{item.total_volume.toLocaleString()}</h2>
+              <h2 className="millon">
+                <NumberFormatter number={item.total_volume} />
+              </h2>
             </Tooltip>
             <Tooltip title="market cap" placement="top">
-              {" "}
               <h2>$:{item.market_cap.toLocaleString()}</h2>
+              <h2 className="millon">
+                <NumberFormatter number={item.market_cap} />
+              </h2>
             </Tooltip>
           </div>
         ))}
