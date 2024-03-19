@@ -202,6 +202,11 @@ h3 {
     font-size: 1rem !important;
     display: block !important;
   }
+  .listbox .persenteg {
+    padding: 0;
+
+    gap: 0;
+  }
 }
 
 /* Responsive styles for list container 500 px */
@@ -229,6 +234,26 @@ h3 {
   }
 
   .listbox .persenteg h4 {
-    padding: 0.1rem 0.1rem;
+    padding: 3px;
+  }
+  .listbox .red h4 {
+    font-size: 0.8rem;
+    color: var(--red);
+    border: 2px solid var(--red);
+  }
+  .listbox .green h4 {
+    font-size: 0.8rem;
+    color: var(--red);
+    border: 2px solid var(--red);
+  }
+  .name-img {
+    gap: 0.5rem;
+    display: flex;
+  }
+  .listbox .persenteg {
+    width: 100%;
+  }
+  .listbox > * {
+    width: 100%;
   }
 }
