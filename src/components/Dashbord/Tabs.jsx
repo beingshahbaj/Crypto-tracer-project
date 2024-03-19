@@ -1,15 +1,17 @@
-import  React from "react";
-import Box from "@mui/material/Box";
-
+import React from "react";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { List } from "./List";
 import { Grid } from "./Grid";
-
+import Gridloding from "./Gridloding";
+import Listloding from "./Listloding";
+import "./style.css";
 export default function LabTabs({ data, loading, error }) {
   const [value, setValue] = React.useState("1");
+
+  console.log(data, loading, error);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,10 +35,10 @@ export default function LabTabs({ data, loading, error }) {
           </TabList>
         </div>
         <TabPanel value="1">
-          <List />
+          {loading ? <Gridloding /> : <Grid data={data} />}
         </TabPanel>
         <TabPanel value="2">
-          <Grid />
+          {loading ? <Listloding /> : <List data={data} />}
         </TabPanel>
       </TabContext>
     </div>

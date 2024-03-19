@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LabTabs from "./Tabs";
 import axios from "axios";
 
 function Dashboard() {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchdata = async () => {
     setLoading(true);
-   try {
-     const response = axios.get(
-       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
-     );
-     setData(response.data);
-    setLoading(false);
+    try {
+      const response = await axios.get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+      );
+      setData(response.data);
+      setLoading(false);
 
-   } catch (error) {
-     setError(error);
-      
-   }
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchdata();
   }, []);
 
