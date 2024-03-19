@@ -4,13 +4,15 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TimeAgo from "./Time";
 import { Tooltip } from "@mui/material";
-import NumberFormatter from "../Compare/Nomberformater";
+import NumberFormatter from "./Nomberformater";
+import nodata from "../../assets/nodata.jpg";
 
-export function List({ data }) {
+
+export function List({ data, error }) {
   console.log(data);
   return (
     <div className="listcontainer">
-      {data.length > 0 &&
+      {data.length > 0 || !error ? (
         data.map((item) => (
           <div
             className={
@@ -67,7 +69,11 @@ export function List({ data }) {
               </h2>
             </Tooltip>
           </div>
-        ))}
+        ))
+      ) : (
+        <img className="nodata_img" src={nodata} alt="" />
+      )}
+     
     </div>
   );
 }

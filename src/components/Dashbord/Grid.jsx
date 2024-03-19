@@ -3,12 +3,13 @@ import "./style.css";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TimeAgo from "./Time";
+import nodata from "../../assets/nodata.jpg";
 
 export function Grid({ data }) {
   console.log(data);
   return (
-    <div className="gridcontainer">
-      {data.length > 0 &&
+    <div className={data.length > 0 ? "gridcontainer" : "flex"}>
+      {data.length > 0 ? (
         data.map((item) => (
           <div
             className={
@@ -52,7 +53,10 @@ export function Grid({ data }) {
             <h4> total volume $:{item.total_volume}</h4>
             <h4> market cap$:{item.market_cap}</h4>
           </div>
-        ))}
+        ))
+      ) : (
+        <img className="nodata_img" src={nodata} alt="" />
+      )}
     </div>
   );
 }

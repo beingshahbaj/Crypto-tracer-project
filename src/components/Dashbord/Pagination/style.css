@@ -1,0 +1,23 @@
+.css-1sazv7p-MuiStack-root {
+  margin-bottom: 2rem;
+  align-items: center !important;
+}
+
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: var(--blue) !important;
+  color: var(--white) !important;
+}
+
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+  color: inherit;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  padding: 1rem !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  color: rgb(255, 255, 255) !important;
+  border: 0.2px solid var(--grey) !important;
+}
+
+.css-wjh20t-MuiPagination-ul {
+  gap: 5px !important;
+}

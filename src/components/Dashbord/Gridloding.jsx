@@ -48,7 +48,7 @@ function Media(props) {
                   sx={{
                     borderRadius: "50%",
                     backgroundColor: "var(--grey)",
-                    border: "1px solid var(--grey)",
+
                     boxShadow: "var(--shadow)",
                   }}
                 />
@@ -61,7 +61,7 @@ function Media(props) {
                       marginY: "10px",
                       borderRadius: 3,
                       backgroundColor: "var(--grey)",
-                      border: "1px solid var(--grey)",
+
                       boxShadow: "var(--shadow)",
                     }}
                   />
@@ -72,7 +72,7 @@ function Media(props) {
                       marginY: "10px",
                       borderRadius: 3,
                       backgroundColor: "var(--grey)",
-                      border: "1px solid var(--grey)",
+
                       boxShadow: "var(--shadow)",
                     }}
                   />
@@ -93,7 +93,7 @@ function Media(props) {
                   sx={{
                     borderRadius: 3,
                     backgroundColor: "var(--grey)",
-                    border: "1px solid var(--grey)",
+
                     boxShadow: "var(--shadow)",
                   }}
                 />
@@ -104,7 +104,7 @@ function Media(props) {
                   sx={{
                     borderRadius: "50%",
                     backgroundColor: "var(--grey)",
-                    border: "1px solid var(--grey)",
+
                     boxShadow: "var(--shadow)",
                   }}
                 />
@@ -114,9 +114,9 @@ function Media(props) {
                   variant="rectangular"
                   sx={{
                     margin: "10px",
-                    borderRadius: "",
+                    borderRadius: "10px",
                     backgroundColor: "var(--grey)",
-                    border: "1px solid var(--grey)",
+
                     boxShadow: "var(--shadow)",
                   }}
                 />
@@ -124,9 +124,9 @@ function Media(props) {
                   variant="rectangular"
                   sx={{
                     margin: "10px",
-                    borderRadius: "",
+                    borderRadius: "10px",
                     backgroundColor: "var(--grey)",
-                    border: "1px solid var(--grey)",
+
                     boxShadow: "var(--shadow)",
                   }}
                 />
@@ -134,9 +134,9 @@ function Media(props) {
                   variant="rectangular"
                   sx={{
                     margin: "10px",
-                    borderRadius: "",
+                    borderRadius: "10px",
                     backgroundColor: "var(--grey)",
-                    border: "1px solid var(--grey)",
+
                     boxShadow: "var(--shadow)",
                   }}
                 />
