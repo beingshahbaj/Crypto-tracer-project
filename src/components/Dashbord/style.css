@@ -183,6 +183,7 @@ h3 {
 
 @media only screen and (max-width: 800px) {
   .gridcontainer {
+    padding: 1rem;
     place-items: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -205,6 +206,8 @@ h3 {
   /* list container responsive */
 
   .listcontainer {
+    padding: 1rem;
+
     width: 100%;
     display: flex;
     flex-direction: column;
