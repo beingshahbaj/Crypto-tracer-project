@@ -7,7 +7,7 @@
 }
 
 .css-woxc1c-MuiGrid-root {
-  padding: 3rem 7rem;
+  padding: 3rem 7rem !important;
 }
 
 .gridbox {
@@ -162,6 +162,10 @@ h3 {
 }
 
 @media only screen and (max-width: 800px) {
+  .css-woxc1c-MuiGrid-root {
+    padding: 0 !important;
+  }
+
   .gridcontainer {
     padding: 0;
     place-items: center;
@@ -227,7 +231,7 @@ h3 {
     gap: 0;
   }
   .css-woxc1c-MuiGrid-root {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 
   .nodata_img {
