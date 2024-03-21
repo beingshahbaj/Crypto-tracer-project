@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 
-function Media({ props }) {
+function Media(props) {
   const { loading = false } = props;
 
   return (
