@@ -4,20 +4,32 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TimeAgo from "./Time";
 import nodata from "../../assets/nodata.jpg";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export function Grid({ data }) {
-  console.log(data);
+  const navigate = useNavigate();
+
   return (
     <div className={data.length > 0 ? "gridcontainer" : "flex"}>
       {data.length > 0 ? (
-        data.map((item) => (
-          <div
+        data.map((item, i) => (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              type: "smooth",
+              type: "smooth",
+              delay: i * 0.1,
+            }}
             className={
               item.price_change_percentage_24h > 0
                 ? "gridbox greenbox"
                 : "gridbox redbox"
             }
             key={item.id}
+            onClick={() => navigate(`../coin/${item.id}`)}
           >
             <div className="name-img">
               <img src={item.image} alt="" />
@@ -29,12 +41,12 @@ export function Grid({ data }) {
 
             {item.price_change_percentage_24h > 0 ? (
               <div className="green persenteg">
-                <h4>{item.price_change_percentage_24h}</h4>
+                <h4>{`${item.price_change_percentage_24h.toFixed(2)}%`}</h4>
                 <TrendingUpIcon className=" icon greenicon" />
               </div>
             ) : (
               <div className="red persenteg">
-                <h4>{item.price_change_percentage_24h}</h4>
+                <h4>{`${item.price_change_percentage_24h.toFixed(2)}%`}</h4>
                 <TrendingDownIcon className=" icon redicon" />
               </div>
             )}
@@ -52,7 +64,7 @@ export function Grid({ data }) {
             </h3>
             <h4> total volume $:{item.total_volume}</h4>
             <h4> market cap$:{item.market_cap}</h4>
-          </div>
+          </motion.div>
         ))
       ) : (
         <img className="nodata_img" src={nodata} alt="" />

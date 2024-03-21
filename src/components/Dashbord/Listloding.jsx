@@ -20,7 +20,7 @@ function Media(props) {
       }}
     >
       {loading
-        ? Array.from(new Array(6)).map((_, index) => (
+        ? Array.from(new Array(10)).map((_, index) => (
             <Box
               key={index}
               sx={{

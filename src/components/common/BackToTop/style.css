@@ -1,0 +1,17 @@
+#myBtn {
+  padding: 0.6rem 0.8rem;
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  scroll-behavior: smooth;
+  font-weight: 600;
+  color: var(--blue);
+  transition: all .3s;
+}
+
+#myBtn:hover {
+  background-color: var(--darkgrey);
+}

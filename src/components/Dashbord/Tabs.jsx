@@ -7,13 +7,21 @@ import { List } from "./List";
 import { Grid } from "./Grid";
 import Gridloding from "./Gridloding";
 import Listloding from "./Listloding";
-import { Search } from "@mui/icons-material";
 import "./style.css";
 import PaginationControlled from "./Pagination/Pagination";
+import Searchf from "./search_filter_sort/Search";
 
-export default function LabTabs({ data, loading, error }) {
+const style = {
+  color: "var(--white)",
+  width: "50vw",
+  fontSize: "1.2rem",
+  fontWeight: "600",
+  textTransform: "capitalize",
+};
+
+export default function LabTabs({ data, loading }) {
   const [pagecoin, setPageCoin] = useState([]);
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = useState("1");
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -23,18 +31,18 @@ export default function LabTabs({ data, loading, error }) {
   };
   const handlepageChange = (e, v) => {
     setPage(v);
-    let prevIndex = (v - 1) * 10;
-    setPageCoin(data.slice(prevIndex, prevIndex + 10));
+    let prevIndex = (v - 1) * 9;
+    setPageCoin(data.slice(prevIndex, prevIndex + 9));
   };
 
   useEffect(() => {
-    setPageCoin(data.slice(0, 10));
+    setPageCoin(data.slice(0, 9));
   }, [data]);
 
   const filtersearch = (e) => {
     setSearch(e.target.value);
     if (search.length == 0) {
-      setCoins(data);
+      setPageCoin(data.slice(0, 9));
     } else {
       const filterdcoin = data.filter((item) =>
         item.name
@@ -45,24 +53,13 @@ export default function LabTabs({ data, loading, error }) {
           )
       );
 
-      setPageCoin(filterdcoin.slice(0, 10));
+      setPageCoin(filterdcoin.slice(0, 9));
     }
-  };
-
-  const style = {
-    color: "var(--white)",
-    width: "50vw",
-    fontSize: "1.2rem",
-    fontWeight: "600",
-    textTransform: "capitalize",
   };
 
   return (
     <div>
-      <div className="search_box">
-        <Search />
-        <input type="search" value={search} onChange={(e) => filtersearch(e)} />
-      </div>
+      <Searchf search={search} filtersearch={filtersearch} />
       <TabContext value={value}>
         <div sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} variant="fullWidth">
@@ -71,13 +68,13 @@ export default function LabTabs({ data, loading, error }) {
           </TabList>
         </div>
         <TabPanel value="1">
-          {loading ? <Gridloding /> : <Grid data={pagecoin} error={error} />}
+          {loading ? <Gridloding /> : <Grid data={pagecoin} />}
         </TabPanel>
         <TabPanel value="2">
-          {loading ? <Listloding /> : <List data={pagecoin} error={error} />}
+          {loading ? <Listloding count={10} /> : <List data={pagecoin} />}
         </TabPanel>
       </TabContext>
-      {!error && !loading && (
+      {pagecoin.length > 0 && (
         <PaginationControlled page={page} handlepageChange={handlepageChange} />
       )}
     </div>

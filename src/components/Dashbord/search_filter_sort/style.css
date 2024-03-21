@@ -1,0 +1,23 @@
+.search_box {
+  display: flex;
+  margin-inline: auto;
+  border-radius: 30px;
+  margin-block: 1rem;
+  width: 80%;
+  height: 4rem;
+  background-color: var(--darkgrey);
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.search_box input {
+  padding-inline: 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  color: var(--white);
+  flex-grow: 1;
+  height: 100%;
+  background-color: var(--darkgrey);
+  border: none;
+  outline: none;
+}
