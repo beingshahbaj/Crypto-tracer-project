@@ -163,7 +163,7 @@ h3 {
 
 @media only screen and (max-width: 800px) {
   .gridcontainer {
-    padding: 1rem;
+    padding: 0;
     place-items: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
