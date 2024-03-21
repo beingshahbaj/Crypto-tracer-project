@@ -246,7 +246,7 @@ h3 {
 
 /* Responsive styles for list container 500 px */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .gridcontainer {
     place-items: center;
     display: grid;
