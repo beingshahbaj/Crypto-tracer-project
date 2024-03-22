@@ -21,10 +21,8 @@ function Dashboard() {
       setLoading(false);
     }
   };
-
   const fetchAgain = () => {
     fetchData();
-    console.log("fetchcakllse");
   };
 
   useEffect(() => {

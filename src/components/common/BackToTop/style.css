@@ -1,4 +1,4 @@
-#myBtn {
+.topButton {
   padding: 0.6rem 0.8rem;
   border: 3px solid var(--blue);
   border-radius: 50%;
@@ -9,9 +9,9 @@
   scroll-behavior: smooth;
   font-weight: 600;
   color: var(--blue);
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-#myBtn:hover {
+.topButton:hover {
   background-color: var(--darkgrey);
 }

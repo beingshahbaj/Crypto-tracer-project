@@ -168,10 +168,10 @@ Media.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default function Listloding() {
+export default function Listloding({ count }) {
   return (
     <Box sx={{ overflow: "hidden" }}>
-      <Media loading />
+      <Media loading count={count} />
     </Box>
   );
 }

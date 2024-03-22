@@ -15,8 +15,8 @@ export function Grid({ data }) {
       {data.length > 0 ? (
         data.map((item, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
             transition={{
               duration: 0.5,
               type: "smooth",

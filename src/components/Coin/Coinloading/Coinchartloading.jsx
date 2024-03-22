@@ -154,8 +154,8 @@ function Media(props) {
         >
           <Skeleton
             variant="rectangular"
-            width={"99%"}
-            height={20}
+            width={200}
+            height={40}
             sx={{
               margin: "10px",
               borderRadius: 1,

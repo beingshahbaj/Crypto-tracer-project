@@ -2,3 +2,41 @@
   padding-block: 1rem;
   padding-inline: 2rem;
 }
+
+.dec_box {
+  margin-block: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+  background-color: var(--darkgrey);
+  border-radius: 15px;
+}
+
+.dec_box h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dec_box .description,
+p {
+  cursor: pointer;
+  line-height: 1.2;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.readmore {
+  display: inline-block;
+
+  padding: 5px;
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--blue);
+}

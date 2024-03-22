@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { DaysProvider } from "./ContexApi/DaysProvider.jsx";
 
 // const theme = createTheme({
 //   palette: {
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <ThemeProvider theme={theme}> */}
     <BrowserRouter>
-      <App />
+      <DaysProvider>
+        <App />
+      </DaysProvider>
     </BrowserRouter>
     {/* </ThemeProvider> */}
   </React.StrictMode>

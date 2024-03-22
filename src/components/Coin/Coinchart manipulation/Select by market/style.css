@@ -1,0 +1,13 @@
+.toggle_btn {
+  padding: 0.5rem 1rem !important;
+  transition: all 0.3s;
+}
+.toggle_btn:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.toggle_btn h4 {
+  font-size: 0.8rem;
+  color: black !important;
+}

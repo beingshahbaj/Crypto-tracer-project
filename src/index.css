@@ -52,8 +52,9 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 3rem;
+  border-radius: 0rem;
   background: var(--blue);
+  opacity: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -67,7 +68,7 @@ p {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--grey);
 }
 .active {

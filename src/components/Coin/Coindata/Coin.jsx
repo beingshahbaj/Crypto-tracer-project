@@ -9,12 +9,15 @@ import NumberFormatter from "../../Dashbord/Nomberformater";
 import { motion } from "framer-motion";
 
 function Coin({ item }) {
-  console.log(item);
+  if (!item) {
+    return null;
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3, type: "spring" ,  }}
+      initial={{ x: -30 }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.3, type: "spring" }}
       className={
         item.market_data.price_change_percentage_24h > 0
           ? "listbox gridbox greenbox"

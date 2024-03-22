@@ -22,14 +22,14 @@ const style = {
 export default function LabTabs({ data, loading }) {
   const [pagecoin, setPageCoin] = useState([]);
   const [value, setValue] = useState("1");
-  const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handlepageChange = (e, v) => {
+
+  const handlePageChange = (e, v) => {
     setPage(v);
     let prevIndex = (v - 1) * 9;
     setPageCoin(data.slice(prevIndex, prevIndex + 9));
@@ -39,27 +39,24 @@ export default function LabTabs({ data, loading }) {
     setPageCoin(data.slice(0, 9));
   }, [data]);
 
-  const filtersearch = (e) => {
-    setSearch(e.target.value);
-    if (search.length == 0) {
+  const filterSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    setSearch(searchTerm);
+    if (search === "") {
       setPageCoin(data.slice(0, 9));
     } else {
-      const filterdcoin = data.filter((item) =>
-        item.name
-          .toLowerCase()
-          .includes(
-            search.toLowerCase() ||
-              item.symbol.toLowerCase().includes(search.toLowerCase())
-          )
+      const filteredCoin = data.filter(
+        (item) =>
+          item.name.toLowerCase().includes(search) ||
+          item.symbol.toLowerCase().includes(search)
       );
-
-      setPageCoin(filterdcoin.slice(0, 9));
+      setPageCoin(filteredCoin.slice(0, 9));
     }
   };
 
   return (
     <div>
-      <Searchf search={search} filtersearch={filtersearch} />
+      <Searchf search={search} filtersearch={filterSearch} />
       <TabContext value={value}>
         <div sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} variant="fullWidth">
@@ -71,11 +68,15 @@ export default function LabTabs({ data, loading }) {
           {loading ? <Gridloding /> : <Grid data={pagecoin} />}
         </TabPanel>
         <TabPanel value="2">
-          {loading ? <Listloding count={10} /> : <List data={pagecoin} />}
+          {loading ? (
+            <Listloding count={6} loading={loading} />
+          ) : (
+            <List data={pagecoin} />
+          )}
         </TabPanel>
       </TabContext>
       {pagecoin.length > 0 && (
-        <PaginationControlled page={page} handlepageChange={handlepageChange} />
+        <PaginationControlled page={page} handlepageChange={handlePageChange} />
       )}
     </div>
   );

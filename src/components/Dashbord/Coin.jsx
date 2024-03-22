@@ -13,8 +13,8 @@ function Coin({ item, key, i }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ x: -30 }}
+      animate={{ x: 0 }}
       transition={{ duration: 0.3, type: "spring", delay: i * 0.1 }}
       className={
         item.price_change_percentage_24h > 0
@@ -48,11 +48,11 @@ function Coin({ item, key, i }) {
         </div>
       ) : (
         <div className="red persenteg">
-          {/* <h4>
+          <h4>
             {item.price_change_percentage_24h !== undefined
               ? `${item.price_change_percentage_24h.toFixed(2)}%`
               : "N/A"}
-          </h4> */}
+          </h4>
 
           <TrendingDownIcon className="icon redicon" />
         </div>
@@ -66,13 +66,13 @@ function Coin({ item, key, i }) {
         updated : <TimeAgo timestamp={item.Date} />
       </h5>
       <Tooltip title="total volume" placement="top">
-        {/* <h2>$:{item.total_volume.toLocaleString()}</h2> */}
+        <h2>$:{item.total_volume.toLocaleString()}</h2>
         <h2 className="millon">
           <NumberFormatter number={item.total_volume} />
         </h2>
       </Tooltip>
       <Tooltip title="market cap" placement="top">
-        {/* <h2>$:{item.market_cap.toLocaleString()}</h2> */}
+        <h2>$:{item.market_cap.toLocaleString()}</h2>
         <h2 className="millon">
           <NumberFormatter number={item.market_cap} />
         </h2>
