@@ -8,3 +8,10 @@
   align-items: center;
   width: 100%;
 }
+
+@media screen and (max-width: 600px) {
+  .chart_manipulation_box {
+    justify-content: flex-start;
+    gap: 0.2rem;
+  }
+}

@@ -15,11 +15,7 @@ const SelectDays = () => {
     <Space wrap>
       <Select
         defaultValue={days}
-        style={{
-          width: 120,
-          height: 40,
-          borderRadius: "15px",
-        }}
+       className="selectdays_box"
         onChange={handleProvinceChange}
         options={[
           {

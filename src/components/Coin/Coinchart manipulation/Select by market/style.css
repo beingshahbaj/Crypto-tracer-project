@@ -11,3 +11,12 @@
   font-size: 0.8rem;
   color: black !important;
 }
+
+@media screen and (max-width: 768px) {
+  .toggle_btn {
+    padding: 0.5rem 0.5rem !important;
+  }
+  .toggle_btn h4 {
+    font-size: 0.6rem;
+  }
+}
