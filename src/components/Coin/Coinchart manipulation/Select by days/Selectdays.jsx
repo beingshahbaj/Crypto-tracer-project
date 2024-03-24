@@ -10,17 +10,19 @@ const SelectDays = () => {
     setDays(value);
   };
 
-  console.log(days);
+  
   return (
     <Space wrap>
       <Select
+      
         defaultValue={days}
-       className="selectdays_box"
+        className="selectdays_box"
         onChange={handleProvinceChange}
         options={[
           {
             value: 7,
             label: "7 Days",
+            style: { fontWeight: "800" },
           },
           {
             value: 30,

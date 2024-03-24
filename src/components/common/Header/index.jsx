@@ -2,8 +2,8 @@ import React from "react";
 import "./style.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import AnchorTemporaryDrawer from "./Drower";
-import ControlledSwitches from "./Switch";
 import Btn from "../Button";
+import CustomizedSwitches from "../Themeswitcher/Index";
 
 function Header() {
   const Navigate = useNavigate();
@@ -16,7 +16,7 @@ function Header() {
         </h1>
       </ul>
       <ul className="links">
-        <ControlledSwitches />
+        <CustomizedSwitches />
         <NavLink className={"link"} to={""}>
           Home
         </NavLink>

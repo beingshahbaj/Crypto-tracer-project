@@ -14,7 +14,7 @@
   margin-bottom: 2rem;
 }
 .discription h1 {
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  text-shadow: 20px 20px 20px var(--darkgrey);
   transition: all 0.3s ease;
   text-transform: capitalize;
   line-height: 1;

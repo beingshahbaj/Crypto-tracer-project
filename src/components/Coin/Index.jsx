@@ -7,30 +7,16 @@ import Error from "../common/Errorpage/Index";
 import Coindata from "./Coindata/Index";
 import { convertdate } from "../../Functions/Convertdate";
 import { useDays } from "../../ContexApi/DaysProvider";
-
+import { useMarket } from "../../ContexApi/MarketProvider";
+import { useCoinDatabyid } from "../../ContexApi/CoindatabyId";
+import { useCoinData } from "../../ContexApi/AllCoindataProvider";
 function Coin() {
+  const { market } = useMarket();
   const { days } = useDays();
+  const { data, loading, error, fetchData } = useCoinDatabyid();
+
   const { coinid } = useParams();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [chartdata, setChartdata] = useState({ labels: [], datasets: [] });
-
-  console.log(days);
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${coinid}`
-      );
-      setData(response.data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   async function getmarketChart() {
     if (coinid) {
@@ -38,8 +24,8 @@ function Coin() {
         const response = await axios.get(
           `https://api.coingecko.com/api/v3/coins/${coinid}/market_chart?vs_currency=usd&days=${days}&interval=daily`
         );
-        console.log(response.data);
-        const prices = response.data.prices;
+
+        const prices = response.data[market];
 
         if (prices.length > 0) {
           setChartdata((prevState) => ({
@@ -48,7 +34,7 @@ function Coin() {
 
             datasets: [
               {
-                label: "Price",
+                label: market,
                 data: prices.map((data) => data[1]),
                 fill: true,
                 border: "1px solid #333",
@@ -67,12 +53,12 @@ function Coin() {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData(coinid);
   }, [coinid]);
 
   useEffect(() => {
     getmarketChart();
-  }, [coinid, days]);
+  }, [coinid, days, market]);
 
   return (
     <div>

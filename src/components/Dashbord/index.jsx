@@ -1,38 +1,20 @@
 import React, { useState, useEffect } from "react";
 import LabTabs from "./Tabs";
-import axios from "axios";
 import Error from "../common/Errorpage/Index";
+import { useCoinData } from "../../ContexApi/AllCoindataProvider";
 
 function Dashboard() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
-      );
-      setData(response.data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  const fetchAgain = () => {
-    fetchData();
-  };
+  const { data, loading, error, fetchdata } = useCoinData();
 
   useEffect(() => {
-    fetchData();
+    fetchdata();
   }, []);
 
+  console.log(data, loading, error);
   return (
     <div>
       {error ? (
-        <Error error={error} fetchAgain={fetchAgain} loading={loading} />
+        <Error />
       ) : (
         <LabTabs data={data} loading={loading} error={error} />
       )}

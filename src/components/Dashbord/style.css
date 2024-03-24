@@ -19,7 +19,7 @@
   flex-direction: column;
   gap: 1.5rem;
   border-radius: 15px;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--darkgrey);
 }
 

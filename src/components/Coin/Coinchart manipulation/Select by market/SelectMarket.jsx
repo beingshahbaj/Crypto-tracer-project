@@ -2,48 +2,40 @@ import React from "react";
 import "./style.css";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { useMarket } from "../../../../ContexApi/MarketProvider";
 
 export default function ToggleButtons() {
-  const [alignment, setAlignment] = React.useState("left");
+  const { market, setMarket } = useMarket();
 
-  const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handleAlignment = (event, newMarket) => {
+    if (newMarket !== null) {
+      setMarket(newMarket);
+     
+    }
   };
 
   return (
     <ToggleButtonGroup
-      value={alignment}
+      className="btngroup"
+      value={market}
       exclusive
-      aria-label="text alignment"
       onChange={handleAlignment}
-      responsive="true"
-      style={{
-        height: "100%",
-        display: "flex",
-
-        margin: "0 1rem",
-        alignItems: "start",
-
-        flexDirection: "",
-        width: "fit-content",
-        background: "white",
-        borderRadius: "10px",
-      }}
+      aria-label="market Vol"
     >
       <ToggleButton
         className="toggle_btn"
-        value="left"
-        aria-label="left aligned"
+        value="market_caps"
+        aria-label="Market Caps"
       >
-        <h4>Price</h4>
+        <h4>Market Cap</h4>
       </ToggleButton>
-      <ToggleButton className="toggle_btn" value="center" aria-label="centered">
-        <h4>Market cap</h4>
+      <ToggleButton className="toggle_btn" value="prices" aria-label="prices">
+        <h4>Prices</h4>
       </ToggleButton>
       <ToggleButton
         className="toggle_btn"
-        value="right"
-        aria-label="right aligned"
+        value="total_volumes"
+        aria-label=" Total Volume"
       >
         <h4>Volume</h4>
       </ToggleButton>

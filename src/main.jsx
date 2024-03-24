@@ -5,6 +5,9 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { DaysProvider } from "./ContexApi/DaysProvider.jsx";
+import { MarketProvider } from "./ContexApi/MarketProvider.jsx";
+import { CoinDataProvider } from "./ContexApi/AllCoindataProvider.jsx";
+import { CoinDatabyidProvider } from "./ContexApi/CoindatabyId.jsx";
 
 // const theme = createTheme({
 //   palette: {
@@ -15,13 +18,15 @@ import { DaysProvider } from "./ContexApi/DaysProvider.jsx";
 // });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    {/* <ThemeProvider theme={theme}> */}
-    <BrowserRouter>
+  <BrowserRouter>
+    <CoinDatabyidProvider>
       <DaysProvider>
-        <App />
+        <MarketProvider>
+          <CoinDataProvider>
+            <App />
+          </CoinDataProvider>
+        </MarketProvider>
       </DaysProvider>
-    </BrowserRouter>
-    {/* </ThemeProvider> */}
-  </React.StrictMode>
+    </CoinDatabyidProvider>
+  </BrowserRouter>
 );

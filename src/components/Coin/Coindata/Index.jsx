@@ -8,8 +8,8 @@ import ChartManipulation from "../Coinchart manipulation/Index";
 function Coindata({ data, chartdata }) {
   return (
     <div className="coin_data">
-      <Coin item={data} />
       <ChartManipulation />
+      <Coin item={data} />
       <LineChart data={chartdata} />
       <CoinDecription data={data} />
     </div>

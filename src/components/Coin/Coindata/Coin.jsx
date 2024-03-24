@@ -9,10 +9,6 @@ import NumberFormatter from "../../Dashbord/Nomberformater";
 import { motion } from "framer-motion";
 
 function Coin({ item }) {
-  if (!item) {
-    return null;
-  }
-
   return (
     <motion.div
       initial={{ x: -30 }}
