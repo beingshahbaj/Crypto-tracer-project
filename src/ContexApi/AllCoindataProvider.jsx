@@ -33,7 +33,6 @@ export const CoinDataProvider = ({ children }) => {
     fetchdata();
   }, []);
 
-  s;
   const contextValue = useMemo(
     () => ({ data, loading, error, fetchdata }),
     [data, loading, error, fetchdata]

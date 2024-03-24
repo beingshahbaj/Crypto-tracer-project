@@ -5,7 +5,7 @@ import { Select } from "antd";
 import { useCoinData } from "../../ContexApi/AllCoindataProvider";
 import Coin from "../Coin/Coindata/Coin";
 import CoinDecription from "../Coin/Coindecription/CoinDecription";
-
+import Listloding from "../Dashbord/Listloding";
 function Compare() {
   const { data, fetchdata } = useCoinData();
   const [firstcrypto, setFirstcrypto] = useState(null);
@@ -51,7 +51,14 @@ function Compare() {
   );
 
   return (
-    <div className="Compare" style={{ padding: 20 }}>
+    <div
+      style={{
+        padding: 20,
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+      }}
+    >
       {data.length > 0 && (
         <div className="BasicSelect">
           <Select
@@ -87,10 +94,10 @@ function Compare() {
         </div>
       )}
       <div className="coin_data">
-        {firstcrypto && <Coin item={firstcrypto} />}
-        {secondcrypto && <Coin item={secondcrypto} />}
+        {firstcrypto ? <Coin item={firstcrypto} /> : <Listloding count={1} />}
+        {secondcrypto ? <Coin item={secondcrypto} /> : <Listloding count={1} />}
       </div>
-      <div className="dec_box">
+      <div className="dec_container">
         {firstcrypto !== null && <CoinDecription data={firstcrypto} />}
         {secondcrypto !== null && <CoinDecription data={secondcrypto} />}
       </div>
