@@ -1,0 +1,15 @@
+.error-page {
+  gap: 2rem;
+  display: flex;
+  width: 100%;
+  background-color: var(--darkgrey);
+  border-radius: 10px;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.error-page h1 {
+  border-radius: 10px;
+  text-align: center;
+  color: red;
+}

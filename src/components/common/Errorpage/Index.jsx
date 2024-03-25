@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from "antd";
 import { useCoinData } from "../../../ContexApi/AllCoindataProvider";
+import "./style.css";
 
-function Error() {
-  const { loading, error, fetchData } = useCoinData();
+function Error({ error }) {
+  const { loading, fetchData } = useCoinData();
 
   const fetchdata = () => {
     fetchData();
@@ -11,10 +12,11 @@ function Error() {
 
   console.log(error);
   return (
-    <div>
+    <div className={"error-page"}>
       <Button loading={loading} type="primary" onClick={fetchdata}>
         Fetch Again
       </Button>
+      <h1>{error.message}</h1>
     </div>
   );
 }

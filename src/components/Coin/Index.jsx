@@ -10,6 +10,7 @@ import { useDays } from "../../ContexApi/DaysProvider";
 import { useMarket } from "../../ContexApi/MarketProvider";
 import { useCoinDatabyid } from "../../ContexApi/CoindatabyId";
 import { useCoinData } from "../../ContexApi/AllCoindataProvider";
+
 function Coin() {
   const { market } = useMarket();
   const { days } = useDays();

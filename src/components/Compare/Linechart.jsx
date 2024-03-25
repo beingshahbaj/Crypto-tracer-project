@@ -2,8 +2,10 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import "./style.css";
+import { NumberFormatter } from "../../Functions/NumberFormater";
 
-const LineChart = ({ data, multiAxix }) => {
+const LineChartCompare = ({ data, multiAxix }) => {
+  console.log(data);
   const defaultOptions = {
     plugins: {
       legend: {
@@ -17,6 +19,16 @@ const LineChart = ({ data, multiAxix }) => {
       intersect: false,
       mode: "nearest",
     },
+    scales: {
+      crypto1: {
+        type: "linear",
+        position: "left",
+      },
+      crypto2: {
+        type: "linear",
+        position: "right",
+      },
+    },
   };
 
   return (
@@ -26,4 +38,4 @@ const LineChart = ({ data, multiAxix }) => {
   );
 };
 
-export default React.memo(LineChart);
+export default React.memo(LineChartCompare);

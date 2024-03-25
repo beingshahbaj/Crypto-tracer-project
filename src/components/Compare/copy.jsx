@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./style.css";
 import axios from "axios";
 import { Select } from "antd";
 import { useCoinData } from "../../ContexApi/AllCoindataProvider";
@@ -11,57 +12,41 @@ import { useDays } from "../../ContexApi/DaysProvider";
 import { convertdate } from "../../Functions/Convertdate";
 import SelectDays from "../Coin/Coinchart manipulation/Select by days/Selectdays";
 import LineChartCompare from "./Linechart";
-import Coinchartloading from "../Coin/Coinloading/Coinchartloading";
-import Error from "../common/Errorpage/Index";
 
 function Compare() {
   const { market } = useMarket();
   const { days } = useDays();
-  const { data, loading, error, fetchdata } = useCoinData();
+  const { data, fetchdata } = useCoinData();
 
-  const [charterror, setCharterror] = useState(null);
   const [one, setOne] = useState(null);
   const [two, setTwo] = useState(null);
+
   const [prices1, setPrices1] = useState([]);
   const [prices2, setPrices2] = useState([]);
+
   const [firstcrypto, setFirstcrypto] = useState(null);
   const [secondcrypto, setSecondcrypto] = useState(null);
-  const [chartdata, setChartdata] = useState(null);
 
-  async function fetchDataAndChart(coinId, setCrypto, setfilter, flag) {
+  const [chartdata, setChartdata] = useState({});
+
+  async function getmarketChart(coinid, lable, flag) {
     try {
-      const [coinResponse, chartResponse] = await Promise.all([
-        axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`),
-        axios.get(
-          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}&interval=daily`
-        ),
-      ]);
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${coinid}/market_chart?vs_currency=usd&days=${days}&interval=daily`
+      );
 
-      setCrypto(coinResponse.data);
-      setfilter(coinId);
       if (flag) {
-        setPrices1(chartResponse.data[market]);
+        setPrices1(response.data[market]);
       } else {
-        setPrices2(chartResponse.data[market]);
+        setPrices2(response.data[market]);
       }
     } catch (error) {
-      setCharterror(error);
+      console.error("Error chart fetching data:", error);
     }
   }
 
   useEffect(() => {
-    fetchDataAndChart("bitcoin", setFirstcrypto, setOne, true);
-    fetchDataAndChart("ethereum", setSecondcrypto, setTwo, false);
-    fetchdata();
-  }, [days, market]);
-
-  useEffect(() => {
-    if (
-      prices1.length > 0 &&
-      prices2.length > 0 &&
-      firstcrypto &&
-      secondcrypto
-    ) {
+    if (prices1.length > 0 && prices2.length > 0) {
       setChartdata({
         labels: prices1.map((data) => convertdate(data[0])),
         datasets: [
@@ -70,7 +55,6 @@ function Compare() {
             data: prices1.map((data) => data[1]),
             tension: 0.25,
             fill: true,
-
             border: "1px solid #333",
             backgroundColor: "rgba(54, 162, 235, 0.1)",
             borderColor: "rgba(54, 162, 235, 1)",
@@ -79,7 +63,6 @@ function Compare() {
             pointBorderColor: "#fff",
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(54, 162, 235, 1)",
-            yAxisID: "crypto1",
           },
           {
             label: secondcrypto.name,
@@ -94,15 +77,38 @@ function Compare() {
             pointBorderColor: "#fff",
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(255, 99, 132, 1)",
-            yAxisID: "crypto2",
           },
         ],
       });
     }
   }, [prices1, prices2, firstcrypto, secondcrypto]);
 
+  useEffect(() => {
+    fetchData("bitcoin", setFirstcrypto, setOne);
+    fetchData("ethereum", setSecondcrypto, setTwo);
+    fetchdata();
+  }, []);
+
+  useEffect(() => {
+    getmarketChart("bitcoin", "Bitcoin", true);
+    getmarketChart("ethereum", "Ethereum", false);
+  }, [days, market]);
+
+  async function fetchData(coinId, setCrypto, setfilter) {
+    try {
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${coinId}`
+      );
+      setCrypto(response.data);
+      setfilter(coinId);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
   const onChange = async (value, setCrypto, setfilter, flag) => {
-    await fetchDataAndChart(value, setCrypto, setfilter, flag);
+    await fetchData(value, setCrypto, setfilter);
+    getmarketChart(value, value, flag);
   };
 
   const onSearch = (value) => {
@@ -123,7 +129,7 @@ function Compare() {
     </div>
   );
 
-  console.log(firstcrypto, secondcrypto);
+  console.log(chartdata);
 
   return (
     <div
@@ -134,7 +140,7 @@ function Compare() {
         gap: "1rem",
       }}
     >
-      {data.length > 0 ? (
+      {data.length > 0 && (
         <div className="BasicSelect">
           <Select
             className="select_crypto"
@@ -148,7 +154,10 @@ function Compare() {
             defaultActiveFirstOption={false}
             options={data
               .filter((item) => item.id !== two)
-              .map((item) => ({ value: item.id, label: renderOption(item) }))}
+              .map((item) => ({
+                value: item.id,
+                label: renderOption(item),
+              }))}
           />
           <Select
             className="select_crypto"
@@ -164,31 +173,23 @@ function Compare() {
             defaultActiveFirstOption={false}
             options={data
               .filter((item) => item.id !== one)
-              .map((item) => ({ value: item.id, label: renderOption(item) }))}
+              .map((item) => ({
+                value: item.id,
+                label: renderOption(item),
+              }))}
           />
           <SelectDays />
           <ToggleButtons />
         </div>
-      ) : error ? (
-        <Error error={error} />
-      ) : loading ? (
-        <Listloding count={1} />
-      ) : null}
+      )}
       <div className="coin_data">
         {firstcrypto ? <Coin item={firstcrypto} /> : <Listloding count={1} />}
         {secondcrypto ? <Coin item={secondcrypto} /> : <Listloding count={1} />}
       </div>
-      {chartdata ? (
-        <LineChartCompare data={chartdata} multiAxix={true} />
-      ) : charterror ? (
-        <Error error={charterror} />
-      ) : (
-        <Coinchartloading />
-      )}
-
+      <LineChartCompare data={chartdata} multiAxix={true} />
       <div className="dec_container">
-        {firstcrypto && <CoinDecription data={firstcrypto} />}
-        {secondcrypto && <CoinDecription data={secondcrypto} />}
+        {firstcrypto !== null && <CoinDecription data={firstcrypto} />}
+        {secondcrypto !== null && <CoinDecription data={secondcrypto} />}
       </div>
     </div>
   );

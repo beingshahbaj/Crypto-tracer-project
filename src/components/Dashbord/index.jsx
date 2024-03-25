@@ -14,7 +14,7 @@ function Dashboard() {
   return (
     <div>
       {error ? (
-        <Error />
+        <Error error={error} />
       ) : (
         <LabTabs data={data} loading={loading} error={error} />
       )}

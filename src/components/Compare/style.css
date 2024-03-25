@@ -14,7 +14,7 @@
   background-color: var(--darkgrey);
   padding: 1rem;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 1.5rem;
 }
 
@@ -24,7 +24,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  padding: 0;
+  padding: 0 !important;
 }
 
 .listbox {
@@ -56,4 +56,18 @@
   gap: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.chartcontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--darkgrey);
+  color: var(--white);
 }
