@@ -7,6 +7,7 @@ import TimeAgo from "../../Dashbord/Time";
 import { Tooltip } from "@mui/material";
 import NumberFormatter from "../../Dashbord/Nomberformater";
 import { motion } from "framer-motion";
+import Addbutton from "../../Wishlist/Addbutton";
 
 function Coin({ item }) {
   return (
@@ -79,6 +80,7 @@ function Coin({ item }) {
           <NumberFormatter number={item.market_data.market_cap.usd} />
         </h2>
       </Tooltip>
+      <Addbutton coin={item} />
     </motion.div>
   );
 }

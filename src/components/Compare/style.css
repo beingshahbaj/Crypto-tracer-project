@@ -71,3 +71,38 @@
   background-color: var(--darkgrey);
   color: var(--white);
 }
+
+.select_crypto {
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+:where(.css-dev-only-do-not-override-djtmh8).ant-select-single:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector {
+  color: rgb(49, 49, 49);
+  border-color: transparent !important;
+  font-size: 0.6rem;
+  color: var(--white);
+  background-color: rgb(234, 234, 234) !important;
+  width: 100%;
+  height: 2.5rem;
+  padding: 9px 7px;
+}
+
+span {
+  padding: 0.2rem;
+
+  color: rgb(35, 35, 35) !important;
+}
+
+.css-15ya79y-MuiGrid-root {
+  padding: 0 !important;
+}
+
+.css-i6bazn {
+  width: 100%;
+}

@@ -6,6 +6,7 @@ import TimeAgo from "./Time";
 import nodata from "../../assets/nodata.jpg";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Addbutton from "../Wishlist/Addbutton";
 
 export function Grid({ data }) {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export function Grid({ data }) {
                 <h3>{`${item.symbol}-usd`}</h3>
                 <p>{item.name}</p>
               </div>
+              <Addbutton className={"addbtn"} coin={item} />
             </div>
 
             {item.price_change_percentage_24h > 0 ? (

@@ -21,3 +21,16 @@
   border: none;
   outline: none;
 }
+@media screen and (max-width: 500px) {
+  .search_box {
+    display: flex;
+    margin-inline: auto;
+    border-radius: 30px;
+    margin-block: 1rem;
+    width: 80%;
+    height: 2.5rem;
+    background-color: var(--darkgrey);
+    align-items: center;
+    padding-left: 2rem;
+  }
+}

@@ -89,6 +89,7 @@ function Media(props) {
                 }}
               >
                 <Skeleton
+                  className="none"
                   variant="rectangular"
                   width={200}
                   height={40}
@@ -100,6 +101,7 @@ function Media(props) {
                   }}
                 />
                 <Skeleton
+                  className="none"
                   variant="rectangular"
                   width={50}
                   height={50}
@@ -121,6 +123,7 @@ function Media(props) {
                 }}
               >
                 <Skeleton
+                  className="none"
                   variant="rectangular"
                   width={150}
                   height={40}
@@ -133,6 +136,7 @@ function Media(props) {
                   }}
                 />
                 <Skeleton
+                  className="none"
                   variant="rectangular"
                   width={200}
                   height={40}
@@ -145,6 +149,7 @@ function Media(props) {
                   }}
                 />
                 <Skeleton
+                  className="none"
                   variant="rectangular"
                   width={200}
                   height={40}

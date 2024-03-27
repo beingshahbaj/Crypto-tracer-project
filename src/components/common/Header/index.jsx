@@ -23,6 +23,9 @@ function Header() {
         <NavLink className={"link"} to={"compare"}>
           compare
         </NavLink>
+        <NavLink className={"link"} to={"wishlist"}>
+          Whislist
+        </NavLink>
         <Btn type={"contained"} onClick={() => Navigate("dashboard")} />
       </ul>
       <div className="drawer">

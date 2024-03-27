@@ -7,6 +7,7 @@ import { Tooltip } from "@mui/material";
 import NumberFormatter from "./Nomberformater";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Addbutton from "../Wishlist/Addbutton";
 
 function Coin({ item, key, i }) {
   const navigate = useNavigate();
@@ -77,6 +78,7 @@ function Coin({ item, key, i }) {
           <NumberFormatter number={item.market_cap} />
         </h2>
       </Tooltip>
+      <Addbutton coin={item} />
     </motion.div>
   );
 }

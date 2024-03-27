@@ -39,6 +39,7 @@ h3 {
 .name-img {
   gap: 2rem;
   display: flex;
+  justify-content: space-between;
 }
 
 .name-img img {
@@ -166,6 +167,9 @@ h3 {
     padding: 0 !important;
   }
 
+  .none {
+    display: none;
+  }
   .gridcontainer {
     padding: 0;
     place-items: center;
@@ -182,7 +186,7 @@ h3 {
   }
   .css-13xfq8m-MuiTabPanel-root {
     display: flex !important;
-    padding: 24px;
+    padding: 0;
     justify-content: center !important;
     align-items: center !important;
   }
@@ -247,6 +251,21 @@ h3 {
 /* Responsive styles for list container 500 px */
 
 @media only screen and (max-width: 500px) {
+  .css-17mb3wo {
+    padding-inline: 10px;
+
+    display: flex;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: center;
+    width: 100%;
+    border-radius: 12px;
+    background-color: var(--darkgrey);
+  }
+  .none {
+    display: none;
+  }
   .gridcontainer {
     place-items: center;
     display: grid;

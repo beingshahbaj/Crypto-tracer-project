@@ -22,7 +22,6 @@
 }
 
 body {
-  overflow-x: hidden;
   scroll-behavior: smooth;
   color: var(--white);
   -webkit-font-smoothing: antialiased;

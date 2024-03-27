@@ -28,7 +28,10 @@ function Compare() {
   const [secondcrypto, setSecondcrypto] = useState(null);
   const [chartdata, setChartdata] = useState(null);
 
+  const [isLoading, setLisLoading] = useState(false);
+
   async function fetchDataAndChart(coinId, setCrypto, setfilter, flag) {
+    setLisLoading(true);
     try {
       const [coinResponse, chartResponse] = await Promise.all([
         axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`),
@@ -38,6 +41,7 @@ function Compare() {
       ]);
 
       setCrypto(coinResponse.data);
+      setLisLoading(false);
       setfilter(coinId);
       if (flag) {
         setPrices1(chartResponse.data[market]);
@@ -45,6 +49,8 @@ function Compare() {
         setPrices2(chartResponse.data[market]);
       }
     } catch (error) {
+      setLisLoading(false);
+
       setCharterror(error);
     }
   }
@@ -137,6 +143,7 @@ function Compare() {
       {data.length > 0 ? (
         <div className="BasicSelect">
           <Select
+            loading={isLoading}
             className="select_crypto"
             showSearch
             placeholder={"Select crypto first"}
@@ -151,6 +158,7 @@ function Compare() {
               .map((item) => ({ value: item.id, label: renderOption(item) }))}
           />
           <Select
+            loading={isLoading}
             className="select_crypto"
             showSearch
             placeholder={"Select crypto second"}

@@ -75,7 +75,7 @@ export default function LabTabs({ data, loading }) {
           )}
         </TabPanel>
       </TabContext>
-      {pagecoin.length > 0 && (
+      {pagecoin.length >= 9 && (
         <PaginationControlled page={page} handlepageChange={handlePageChange} />
       )}
     </div>

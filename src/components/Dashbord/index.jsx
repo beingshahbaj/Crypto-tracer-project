@@ -6,11 +6,11 @@ import { useCoinData } from "../../ContexApi/AllCoindataProvider";
 function Dashboard() {
   const { data, loading, error, fetchdata } = useCoinData();
 
+  document.title = "crypto dashboard";
   useEffect(() => {
     fetchdata();
   }, []);
 
-  console.log(data, loading, error);
   return (
     <div>
       {error ? (
