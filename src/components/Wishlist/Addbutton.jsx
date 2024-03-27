@@ -29,6 +29,7 @@ function Addbutton({ coin }) {
           icon2={coin.image}
         />
       );
+      setFlag(!flag);
     } else {
       if (window.confirm("Remove coin from wishlist?")) {
         const index = storedcoin.indexOf(coin.id);

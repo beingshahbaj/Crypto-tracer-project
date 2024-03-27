@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import {
@@ -12,6 +12,16 @@ import {
 } from "@mui/icons-material";
 
 const Footer = () => {
+  const [time, setTime] = useState();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const date = new Date();
+      setTime(date.toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <footer className="footer">
       <div className="flexr">
@@ -57,7 +67,7 @@ const Footer = () => {
         <div className="flexc">
           <ul className="flexc">
             <h2>social media</h2>
-            <div className="flexr">
+            <div className="flex">
               <a href="#">
                 <GitHub />
               </a>
@@ -72,10 +82,14 @@ const Footer = () => {
               </a>
             </div>
           </ul>
+          <h4>time {time}</h4>
         </div>
       </div>
       <hr />
-      <p className="copyright">Copyright &copy; {new Date().getFullYear()}</p>
+      <h4 className="copyright">
+        Made with ❤️ by shahbaj khan | All rights reserved.{" "}
+        {new Date().getFullYear()}
+      </h4>
     </footer>
   );
 };
