@@ -54,8 +54,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomizedSwitches() {
-  const storedTheme = localStorage.getItem("theme");
-  const [theme, setTheme] = useState(storedTheme);
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    setTheme(storedTheme);
+  }, []);
+
+  const [theme, setTheme] = useState();
 
   const darkmode = () => {
     setTheme("dark");

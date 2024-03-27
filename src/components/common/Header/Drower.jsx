@@ -4,6 +4,7 @@ import { IconButton } from "@mui/material";
 import ControlledSwitches from "./Switch";
 import { NavLink } from "react-router-dom";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import CustomizedSwitches from "../Themeswitcher/Index";
 export default function AnchorTemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
 
@@ -23,7 +24,7 @@ export default function AnchorTemporaryDrawer() {
           <NavLink className={"link"} to={"dashboard"}>
             dashboard
           </NavLink>
-          <ControlledSwitches />
+          <CustomizedSwitches />
         </div>
       </Drawer>
     </div>
