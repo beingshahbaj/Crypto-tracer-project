@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-
+import "./Style.css";
 function Media(props) {
   const { loading = false } = props;
 
@@ -65,56 +65,6 @@ function Media(props) {
                     width={200}
                     height={40}
                     sx={{
-                      borderRadius: 3,
-                      backgroundColor: "var(--grey)",
-                      border: "1px solid var(--grey)",
-                      boxShadow: "var(--shadow)",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    gap: "5px",
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    justifyContent: "center",
-                    marginTop: "50px",
-                    flexGrow: "1",
-                    height: "100%",
-                    margin: "15px",
-                  }}
-                >
-                  <Skeleton
-                    variant="rectangular"
-                    width={150}
-                    height={40}
-                    sx={{
-                      margin: "10px",
-                      borderRadius: 3,
-                      backgroundColor: "var(--grey)",
-                      border: "1px solid var(--grey)",
-                      boxShadow: "var(--shadow)",
-                    }}
-                  />
-                  <Skeleton
-                    variant="rectangular"
-                    width={200}
-                    height={40}
-                    sx={{
-                      margin: "10px",
-                      borderRadius: 3,
-                      backgroundColor: "var(--grey)",
-                      border: "1px solid var(--grey)",
-                      boxShadow: "var(--shadow)",
-                    }}
-                  />
-                  <Skeleton
-                    variant="rectangular"
-                    width={200}
-                    height={40}
-                    sx={{
-                      margin: "10px",
                       borderRadius: 3,
                       backgroundColor: "var(--grey)",
                       border: "1px solid var(--grey)",
