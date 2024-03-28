@@ -5,18 +5,18 @@
 }
 
 .toggle_btn {
-  background-color: var(--grey) !important;
+  border: 1px solid var(--grey) !important;
+  background-color: rgb(233, 233, 233) !important;
   padding: 0.5rem 1rem !important;
   transition: all 0.3s;
 }
 .toggle_btn:hover {
   background-color: var(--blue) !important;
-  color: var(--white);
 }
 
 .toggle_btn h4 {
   font-size: 0.8rem;
-  color: var(--white);
+  color: black !important;
 }
 
 @media screen and (max-width: 768px) {

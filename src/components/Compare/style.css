@@ -83,7 +83,6 @@
     .ant-select-customize-input
   )
   .ant-select-selector {
-  color: rgb(49, 49, 49);
   border-color: transparent !important;
   font-size: 0.6rem;
   color: var(--white);
@@ -95,8 +94,7 @@
 
 span {
   padding: 0.2rem;
-
-  color: rgb(35, 35, 35) !important;
+  color: var(--white);
 }
 
 .css-15ya79y-MuiGrid-root {
@@ -105,4 +103,11 @@ span {
 
 .css-i6bazn {
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .BasicSelect {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

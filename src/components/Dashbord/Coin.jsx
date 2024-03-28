@@ -78,7 +78,11 @@ function Coin({ item, key, i }) {
           <NumberFormatter number={item.market_cap} />
         </h2>
       </Tooltip>
-      <Addbutton coin={item} />
+      <div className="add_button">
+        <Tooltip title="Add to Wishlist" placement="top">
+          <Addbutton coin={item} />
+        </Tooltip>
+      </div>
     </motion.div>
   );
 }

@@ -6,9 +6,9 @@
 
 :root {
   --blue: #3a80e9;
-  --white: #ececec;
+  --white: #ffebeb;
   --black: #111;
-  --grey: #bcbcbc5a;
+  --grey: #393939;
   --darkgrey: #1b1b1b;
   --green: #61c96f;
   --red: #f94141;
@@ -16,9 +16,9 @@
 
 [data-theme="dark"] {
   --white: #111;
-  --black: #e5e5e5;
-  --grey: #888;
-  --darkgrey: #bbbbbbdf;
+  --black: #fff0f0;
+  --grey: #2c2c2c;
+  --darkgrey: #d5d5d5df;
 }
 
 body {
