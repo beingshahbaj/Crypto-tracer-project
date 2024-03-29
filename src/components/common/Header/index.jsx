@@ -24,7 +24,7 @@ function Header() {
           compare
         </NavLink>
         <NavLink className={"link"} to={"wishlist"}>
-          Whislist
+          Wishlist
         </NavLink>
         <Btn type={"contained"} onClick={() => Navigate("dashboard")} />
       </ul>
