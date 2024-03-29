@@ -67,7 +67,7 @@ function Addbutton({ coin }) {
 export default Addbutton;
 
 const CustomToast = ({ message, icon1, icon2 }) => (
-  <div style={{ display: "flex", alignItems: "center" }}>
+  <div style={{ display: "flex", alignItems: "center", color: "black" }}>
     <img
       src={icon1}
       alt="icon"
