@@ -7,8 +7,6 @@ import React, {
 } from "react";
 import axios from "axios";
 
-const api = "CG-qM6DKgpX93vMyhRpJ2k4Xkms";
-
 const CoinDataContext = createContext();
 
 export const CoinDataProvider = ({ children }) => {
@@ -18,14 +16,15 @@ export const CoinDataProvider = ({ children }) => {
 
   const fetchdata = async () => {
     setLoading(true);
-    const options = {
-      method: "GET",
-      url: "https://api.coingecko.com/api/v3/coins/markets",
-      headers: { "x-cg-demo-api-key": "CG-qM6DKgpX93vMyhRpJ2k4Xkms" },
-    };
     console.log("all data api called");
     try {
-      const response = await axios.request(options);
+      const response = await axios.get(
+        "https://api.coingecko.com/api/v3/coins/markets",
+        {
+          params: { vs_currency: "usd" },
+          headers: { "x-cg-demo-api-key": "CG-qM6DKgpX93vMyhRpJ2k4Xkms" },
+        }
+      );
       setData(response.data);
     } catch (error) {
       setError(error);

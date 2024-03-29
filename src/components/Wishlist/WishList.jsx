@@ -15,7 +15,7 @@ function WishList() {
     const storedCoin = storedCoinString ? JSON.parse(storedCoinString) : [];
     setStoredCoin(storedCoin);
     setFilteredCoin(data.filter((item) => storedCoin.includes(item.id)));
-  }, [loading, error, data, setFilteredCoin]);
+  }, [loading, error, setFilteredCoin]);
 
   return (
     <div>

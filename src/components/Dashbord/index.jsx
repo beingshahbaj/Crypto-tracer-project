@@ -8,7 +8,7 @@ function Dashboard() {
 
   document.title = "crypto dashboard";
   useEffect(() => {
-    fetchdata();
+    data.length == 0 && fetchdata();
   }, []);
 
   return (

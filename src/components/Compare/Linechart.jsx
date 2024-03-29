@@ -5,7 +5,6 @@ import "./style.css";
 import { NumberFormatter } from "../../Functions/NumberFormater";
 
 const LineChartCompare = ({ data, multiAxix }) => {
-  console.log(data);
   const defaultOptions = {
     plugins: {
       legend: {

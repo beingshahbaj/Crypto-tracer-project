@@ -9,12 +9,14 @@ export const CoinDatabyidProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   const fetchData = async (coinId) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${coinId}`
+        ` https://api.coingecko.com/api/v3/coins/${coinId}`,
+        {
+          headers: { "x-cg-demo-api-key": "CG-qM6DKgpX93vMyhRpJ2k4Xkms" },
+        }
       );
       setData(response.data);
     } catch (error) {

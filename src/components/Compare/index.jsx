@@ -34,9 +34,12 @@ function Compare() {
     setLisLoading(true);
     try {
       const [coinResponse, chartResponse] = await Promise.all([
-        axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`),
+        axios.get(` https://api.coingecko.com/api/v3/coins/${coinId}`, {
+          headers: { "x-cg-demo-api-key": "CG-qM6DKgpX93vMyhRpJ2k4Xkms" },
+        }),
         axios.get(
-          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}&interval=daily`
+          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}&interval=daily`,
+          { headers: { "x-cg-demo-api-key": "CG-qM6DKgpX93vMyhRpJ2k4Xkms" } }
         ),
       ]);
 
@@ -128,8 +131,6 @@ function Compare() {
       <span style={{ color: "black", fontWeight: "400" }}>{item.name}</span>
     </div>
   );
-
-  console.log(firstcrypto, secondcrypto);
 
   return (
     <div

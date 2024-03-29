@@ -6,7 +6,7 @@
 
 :root {
   --blue: #3a80e9;
-  --white: #ffebeb;
+  --white: #fffefe;
   --black: #111;
   --grey: #393939;
   --darkgrey: #1b1b1b;
@@ -16,7 +16,7 @@
 
 [data-theme="dark"] {
   --white: #111;
-  --black: #fff0f0;
+  --black: #fefefe;
   --grey: #2c2c2c;
   --darkgrey: #d5d5d5df;
 }

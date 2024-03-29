@@ -55,31 +55,19 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 export default function CustomizedSwitches() {
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
+    const storedTheme = localStorage.getItem("theme") || "light";
     setTheme(storedTheme);
   }, []);
 
-  const [theme, setTheme] = useState();
-
-  const darkmode = () => {
-    setTheme("dark");
-  };
-
-  const lightmode = () => {
-    setTheme("light");
-  };
+  const [theme, setTheme] = useState("light");
 
   const toggleTheme = (e) => {
-    if (e.target.checked) {
-      darkmode();
-    } else {
-      lightmode();
-    }
+    const newTheme = e.target.checked ? "dark" : "light";
+    setTheme(newTheme);
   };
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
-
     localStorage.setItem("theme", theme);
   }, [theme]);
 
