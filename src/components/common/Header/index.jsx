@@ -12,21 +12,14 @@ import { toast } from "react-toastify";
 
 function Header() {
   const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
-  const [auth, setuth] = useState(false);
-  useEffect(() => {
-    const auth = localStorage.getItem("isAuthenticated");
-    setuth(auth);
-  }, []);
+
   async function handleLogin() {
     await loginWithRedirect();
-    if (isAuthenticated) {
-      localStorage.setItem("isAuthenticated", true);
-    }
   }
   function handllogout() {
     if (window.confirm("Are you sure you want to logout?")) {
       logout({ returnTo: window.location.origin });
-      localStorage.setItem("isAuthenticated", false);
+
       toast.success("logout succseefully ");
     } else {
       return;
@@ -50,18 +43,17 @@ function Header() {
         <NavLink className={"link"} to={"compare"}>
           compare
         </NavLink>
-        {isAuthenticated ||
-          (auth && (
-            <NavLink className={"link"} to={"wishlist"}>
-              Wishlist
-            </NavLink>
-          ))}
+        {isAuthenticated && (
+          <NavLink className={"link"} to={"wishlist"}>
+            Wishlist
+          </NavLink>
+        )}
         <Btn
           type={"contained"}
           name={"dashboard"}
           onClick={() => Navigate("dashboard")}
         />
-        {!isAuthenticated && !auth ? (
+        {!isAuthenticated ? (
           <Button type="button" onClick={() => handleLogin()}>
             <Person />
             login
