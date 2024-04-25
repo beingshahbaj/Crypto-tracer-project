@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import AnchorTemporaryDrawer from "./Drower";
@@ -14,6 +14,13 @@ function Header() {
   const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
 
   console.log(user, isAuthenticated);
+
+  useEffect(() => {
+    const initAuth0 = async () => {
+      await checkSession();
+    };
+    initAuth0();
+  }, []);
 
   function handllogout() {
     if (window.confirm("Are you sure you want to logout?")) {
