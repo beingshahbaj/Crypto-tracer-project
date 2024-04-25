@@ -8,6 +8,7 @@ import { DaysProvider } from "./ContexApi/DaysProvider.jsx";
 import { MarketProvider } from "./ContexApi/MarketProvider.jsx";
 import { CoinDataProvider } from "./ContexApi/AllCoindataProvider.jsx";
 import { CoinDatabyidProvider } from "./ContexApi/CoindatabyId.jsx";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 // const theme = createTheme({
 //   palette: {
@@ -23,7 +24,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <DaysProvider>
         <MarketProvider>
           <CoinDataProvider>
-            <App />
+            <Auth0Provider
+              domain="shahbajkhan.us.auth0.com"
+              clientId="0C5cnhpinTvaIoI36snQuF2sBX7aofsA"
+              authorizationParams={{
+                redirect_uri: window.location.origin,
+              }}
+            >
+              <App />
+            </Auth0Provider>
+            ,
           </CoinDataProvider>
         </MarketProvider>
       </DaysProvider>

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-function Btn({ type }) {
+function Btn({ type, name, login }) {
   const navigate = useNavigate();
   return (
     <>
@@ -10,11 +10,14 @@ function Btn({ type }) {
         className="btn"
         style={{
           borderRadius: "20px",
+          display: "flex",
+          alignItems: "center",
         }}
         onClick={() => navigate("dashboard")}
         variant={type}
       >
-        Dashboard
+        {name}
+        {login ? login : null}
       </Button>
     </>
   );

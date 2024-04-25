@@ -11,6 +11,7 @@ const Dashboard = lazy(() => import("./components/Dashbord"));
 const Top = lazy(() => import("./components/common/BackToTop/top"));
 const Coin = lazy(() => import("./components/Coin/Index"));
 const WishList = lazy(() => import("./components/Wishlist/WishList"));
+const User = lazy(() => import("./components/common/User/User"));
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
           <Route path="/compare" element={<Compare />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="coin/:coinid" element={<Coin />} />
-          <Route path="wishlist" element={<WishList />} />
+          <Route path="" element={<User />}>
+            <Route path="wishlist" element={<WishList />} />
+          </Route>
         </Routes>
         <Footer />
         <Top />

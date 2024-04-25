@@ -7,12 +7,6 @@ import { useCoinData } from "../../../ContexApi/AllCoindataProvider";
 function Searchf({ search, filtersearch }) {
   const { data, loading, error, fetchdata } = useCoinData();
 
-  const onChange = async (value) => {};
-
-  const onSearch = (value) => {
-    console.log("search:", value);
-  };
-
   const filterOption = (input, option) =>
     (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
@@ -36,8 +30,8 @@ function Searchf({ search, filtersearch }) {
           showSearch
           placeholder={"Select crypto first"}
           optionFilterProp="children"
-          onChange={(value) => onChange(value)}
-          onSearch={onSearch}
+          onChange={(value) => filtersearch(value)}
+          onSearch={(e) => filtersearch(e)}
           filterOption={filterOption}
           style={{ width: 200 }}
           defaultActiveFirstOption={false}

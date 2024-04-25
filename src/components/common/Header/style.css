@@ -9,6 +9,7 @@ nav {
   left: 0;
   background-color: var(--black);
   z-index: 1000;
+  text-transform: capitalize;
 }
 .links {
   align-items: center;

@@ -47,8 +47,7 @@ function Landingpage() {
             to do so!
           </motion.p>
           <ul className="btn-group">
-            <Btn type={"contained"} />
-            <Btn type={"outlined"} />
+            <Btn type={"contained"} name={"dashboard"} />
           </ul>
         </div>
         <div className="img-box">
