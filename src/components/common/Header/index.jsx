@@ -26,7 +26,7 @@ function Header() {
   function handllogout() {
     if (window.confirm("Are you sure you want to logout?")) {
       logout({ returnTo: window.location.origin });
-      localStorage.removeItem("isAuthenticated");
+      localStorage.setItem("isAuthenticated", false);
       toast.success("logout succseefully ");
     } else {
       return;
