@@ -17,8 +17,8 @@ function Header() {
     const auth = localStorage.getItem("isAuthenticated");
     setuth(auth);
   }, []);
-  function handleLogin() {
-    loginWithRedirect();
+  async function handleLogin() {
+    await loginWithRedirect();
     if (isAuthenticated) {
       localStorage.setItem("isAuthenticated", true);
     }
