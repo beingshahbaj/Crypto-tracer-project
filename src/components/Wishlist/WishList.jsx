@@ -19,13 +19,15 @@ function WishList() {
     setFilteredCoin(data.filter((item) => storedCoin.includes(item.id)));
   }, [loading, error, setFilteredCoin]);
 
+  const auth = localStorage.getItem("isAuthenticated");
   return (
     <div>
-      {isAuthenticated && (
-        <>
-          <h1 style={{ textAlign: "center" }}>welcome {user.name}</h1>
-        </>
-      )}
+      {isAuthenticated ||
+        (auth && (
+          <>
+            <h1 style={{ textAlign: "center" }}>welcome {user.name}</h1>
+          </>
+        ))}
       {error ? (
         <Error error={error} />
       ) : (

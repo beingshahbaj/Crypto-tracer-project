@@ -13,18 +13,18 @@ import { toast } from "react-toastify";
 function Header() {
   const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
 
-  console.log(user, isAuthenticated);
-
-  useEffect(() => {
-    const initAuth0 = async () => {
-      await checkSession();
-    };
-    initAuth0();
-  }, []);
-
+  const auth = localStorage.getItem("isAuthenticated");
+  useEffect(() => {}, []);
+  function handleLogin() {
+    loginWithRedirect();
+    if (isAuthenticated) {
+      localStorage.setItem("isAuthenticated", true);
+    }
+  }
   function handllogout() {
     if (window.confirm("Are you sure you want to logout?")) {
       logout({ returnTo: window.location.origin });
+      localStorage.removeItem("isAuthenticated");
       toast.success("logout succseefully ");
     } else {
       return;
@@ -48,18 +48,19 @@ function Header() {
         <NavLink className={"link"} to={"compare"}>
           compare
         </NavLink>
-        {isAuthenticated && (
-          <NavLink className={"link"} to={"wishlist"}>
-            Wishlist
-          </NavLink>
-        )}
+        {isAuthenticated ||
+          (auth && (
+            <NavLink className={"link"} to={"wishlist"}>
+              Wishlist
+            </NavLink>
+          ))}
         <Btn
           type={"contained"}
           name={"dashboard"}
           onClick={() => Navigate("dashboard")}
         />
         {!isAuthenticated ? (
-          <Button type="button" onClick={() => loginWithRedirect()}>
+          <Button type="button" onClick={() => handleLogin()}>
             <Person />
             login
           </Button>
