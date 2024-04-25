@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import AnchorTemporaryDrawer from "./Drower";
@@ -12,9 +12,11 @@ import { toast } from "react-toastify";
 
 function Header() {
   const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
-
-  const auth = localStorage.getItem("isAuthenticated");
-  useEffect(() => {}, []);
+  const [auth, setuth] = useState(false);
+  useEffect(() => {
+    const auth = localStorage.getItem("isAuthenticated");
+    setuth(auth);
+  }, []);
   function handleLogin() {
     loginWithRedirect();
     if (isAuthenticated) {
@@ -59,7 +61,7 @@ function Header() {
           name={"dashboard"}
           onClick={() => Navigate("dashboard")}
         />
-        {!isAuthenticated ? (
+        {!isAuthenticated && !auth ? (
           <Button type="button" onClick={() => handleLogin()}>
             <Person />
             login

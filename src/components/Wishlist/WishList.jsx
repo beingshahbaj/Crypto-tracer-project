@@ -10,6 +10,7 @@ function WishList() {
   const { data, loading, error } = useCoinData();
   const [storedCoin, setStoredCoin] = useState([]);
   const [filteredCoin, setFilteredCoin] = useState([]);
+  const [auth, setuth] = useState(false);
 
   const { user, isAuthenticated } = useAuth0();
   useEffect(() => {
@@ -17,9 +18,10 @@ function WishList() {
     const storedCoin = storedCoinString ? JSON.parse(storedCoinString) : [];
     setStoredCoin(storedCoin);
     setFilteredCoin(data.filter((item) => storedCoin.includes(item.id)));
+    const auth = localStorage.getItem("isAuthenticated");
+    setuth(auth);
   }, [loading, error, setFilteredCoin]);
 
-  const auth = localStorage.getItem("isAuthenticated");
   return (
     <div>
       {isAuthenticated ||
